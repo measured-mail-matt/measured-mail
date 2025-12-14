@@ -1,0 +1,62 @@
+/* 1. Load Tailwind CSS Library */
+@import url("https://cdn.tailwindcss.com");
+
+/* 2. Configure Tailwind and Custom Colors */
+/* NOTE: The original configuration script is converted into a standard JS file that Tailwind's CDN can execute on load. */
+/* This file now contains the required script block from the <head> */
+/* This is not standard CSS, but it is necessary for Tailwind's CDN script to work. 
+We embed the <script> block directly in the CSS file, which is a common trick 
+when using the CDN and wanting to configure it via an external file, 
+though creating a proper build step is generally recommended for production.
+
+Since GitHub Pages is often used for simple deployments, we'll revert to 
+putting the configuration back in the HTML and placing only pure CSS here 
+for simplicity and standards compliance, as the standard CDN requires the 
+config to be run *before* the body loads.
+
+*** REVISED APPROACH (Tailwind Config MUST run as a script) ***
+We will move the Tailwind configuration back into the HTML's <head> 
+(as it must be executed as JS) and only put the pure custom CSS in this file. 
+
+If you want the **true** separation benefit, you should use a local Tailwind build. 
+Since you are using the CDN, let's make the best separation possible with it:
+*/
+
+/* --- Reverting Tailwind CDN Config to index.html Head for execution order --- */
+
+/* 1. Base Styles for non-Tailwind elements */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff; /* Stark White Background */
+    color: #1f2937; /* Dark Gray text for contrast */
+}
+
+/* 2. Custom utility classes */
+
+/* Accent elements: Dark Blue Accent */
+.utility-accent-line {
+    width: 50px;
+    height: 3px;
+    background-color: #0071BC; /* Dark Blue Accent */
+    margin: 0 auto 1.5rem auto;
+}
+
+/* Card style: changing sharp black/red shadow to soft gray/DARK BLUE hover */
+.stark-card {
+    border: 1px solid #e5e7eb;
+    box-shadow: 4px 4px 0px 0px #374151; /* Softer Dark Gray Shadow */
+    transition: all 0.2s ease;
+}
+
+.stark-card:hover {
+    box-shadow: 6px 6px 0px 0px #0071BC; /* Dark Blue Shadow on hover */
+    transform: translate(-2px, -2px);
+}
+
+/* 3. Custom success/error colors for JS feedback */
+.bg-success-green {
+    background-color: #10B981; /* Tailwind 'green-500' */
+}
+.bg-red-500 {
+    background-color: #EF4444;
+}
